@@ -1,5 +1,6 @@
 import { biggerWorld } from './figure-bigger-world.ts';
 import { clue } from './figure-clue.ts';
+import { derivative } from './figure-derivative.ts';
 import { graphs } from './figure-graphs.ts';
 import { machineRank1 } from './figure-machine-rank1.ts';
 import { machineRank2 } from './figure-machine-rank2.ts';
@@ -14,6 +15,7 @@ Every computed figure by the id of its markers in docs/index.html
 const figures: Readonly<Record<string, () => string>> = {
   'bigger-world': biggerWorld,
   clue,
+  derivative,
   graphs,
   'machine-rank1': machineRank1,
   'machine-rank2': machineRank2,
