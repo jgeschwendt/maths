@@ -17,6 +17,13 @@ export default defineConfig({
       },
     },
     {
+      files: ['bsd/hands.ts'],
+      rules: {
+        // the figure redraws itself from its own markup of computed numbers, never from input. (2026-11-25)
+        'unicorn-js/no-unsafe-dom-html': 'off',
+      },
+    },
+    {
       files: ['bsd/page.ts'],
       rules: {
         // the page's registry imports one module per figure, so it grows with the page. (2026-11-25)

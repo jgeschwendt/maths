@@ -1,3 +1,6 @@
+// an import, not a file read, so a bundle for the browser carries the table
+import table from './allgens.txt' with { type: 'text' };
+
 /**
 A rational number n/d in lowest terms with d > 0
 */
@@ -85,7 +88,6 @@ const parse = (line: string): Curve => {
   };
 };
 
-const table = await Bun.file(new URL('allgens.txt', import.meta.url)).text();
 const lookup = (key: string): Curve =>
   parse(table.split('\n').find((line) => line.startsWith(`${key} `)) ?? '');
 
