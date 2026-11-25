@@ -1,0 +1,29 @@
+/* page.css — what is this page's alone. Tokens and components are ui.css's, the shell
+   (container, measure, sections, snippets) docs.css's; both linked from
+   https://gigantic.dev/ui/, never copied here. */
+
+/* the figures: line art in the text colour, opacity for emphasis, so both themes carry over */
+.plot svg {
+  display: block;
+  fill: none;
+  height: auto;
+  max-width: 34rem;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  width: 100%;
+}
+
+.plot text {
+  fill: currentColor;
+  font-family: var(--ui-font-sans);
+  font-size: 12px;
+  stroke: none;
+}
+
+.plot {
+  color: var(--ui-fg);
+}
+
+.problem h3 {
+  margin-top: var(--ui-space-6);
+}

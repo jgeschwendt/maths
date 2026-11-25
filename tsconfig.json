@@ -1,0 +1,13 @@
+{
+  "extends": "@jlg/tsconfig",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "lib": ["esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": false,
+    "types": ["bun"]
+  },
+  "include": ["bsd", "oxfmt.config.ts", "oxlint.config.ts"]
+}

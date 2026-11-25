@@ -1,0 +1,3 @@
+[exhaustiveness]
+# `.github` is CI wiring; `bsd` is routed by the root map table alone.
+exclude = [".github", "bsd"]

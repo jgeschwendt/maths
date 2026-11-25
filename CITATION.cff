@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+authors:
+  - family-names: Geschwendt
+    given-names: Joshua
+license:
+  - CC-BY-4.0
+  - MIT
+message: If you use this work, please cite it using the metadata in this file.
+repository-code: https://github.com/jgeschwendt/maths
+title: "maths: open problems in mathematics, probed by computation"
+type: software
+url: https://jgeschwendt.github.io/maths/
