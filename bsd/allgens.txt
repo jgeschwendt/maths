@@ -1,0 +1,5 @@
+# the three lines used, from https://raw.githubusercontent.com/JohnCremona/ecdata/master/allgens/allgens.00000-09999
+# conductor, isogeny class, number, [a1,a2,a3,a4,a6], rank, [torsion], generators [X:Y:Z] (torsion first)
+11 a 1 [0,-1,1,-10,-20] 0 [5] [5:5:1]
+37 a 1 [0,0,1,-1,0] 1 [] [0:0:1]
+389 a 1 [0,1,1,-2,0] 2 [] [0:0:1] [1:0:1]

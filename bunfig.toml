@@ -1,0 +1,4 @@
+# `bun test --coverage` fails below every line and every function
+[test]
+coverageSkipTestFiles = true
+coverageThreshold = 1

@@ -1,0 +1,69 @@
+{
+  "adrs": {},
+  "landmarks": {
+    "bsd": {
+      "file": "docs/index.html",
+      "line": 54,
+      "node": "docs"
+    },
+    "open-step": {
+      "file": "docs/index.html",
+      "line": 190,
+      "node": "docs"
+    },
+    "reproduce": {
+      "file": "docs/index.html",
+      "line": 200,
+      "node": "docs"
+    },
+    "status": {
+      "file": "docs/index.html",
+      "line": 166,
+      "node": "docs"
+    }
+  },
+  "nodes": {
+    "/": {
+      "budget": null,
+      "claims": [],
+      "commands": {
+        "check": "mise run check",
+        "docs": "mise run docs",
+        "lint": "bunx oxlint",
+        "test": "bun test --coverage"
+      },
+      "contains": [
+        "docs"
+      ],
+      "declared": {
+        "allow": [],
+        "decided_by": [],
+        "depends": []
+      },
+      "extracted": {
+        "imports": []
+      },
+      "id": "/",
+      "kind": "system",
+      "purpose": "open problems in mathematics probed by computation — first Birch–Swinnerton-Dyer on 11a1, 37a1 and 389a1, every figure computed, every number checked against published values"
+    },
+    "docs": {
+      "budget": null,
+      "claims": [],
+      "commands": {},
+      "contains": [],
+      "declared": {
+        "allow": [],
+        "decided_by": [],
+        "depends": []
+      },
+      "extracted": {
+        "imports": []
+      },
+      "id": "docs",
+      "kind": "container",
+      "purpose": "the page — `index.html` (GitHub Pages), the only prose source — BSD in computed figures, each claim's status, the open step, how to reproduce; `page.css` holds only what is this page's"
+    }
+  },
+  "version": 2
+}

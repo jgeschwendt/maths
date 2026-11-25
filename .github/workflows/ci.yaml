@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # Full history: stele's freshness walks verified.sha..HEAD. No step pushes,
+      # so the token is not left in .git/config.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      # mise.toml's pins (bun, hk, node); sha256 is the extracted mise binary's,
+      # the bare `mise-v<version>-linux-x64` line of that release's SHASUMS256.txt.
+      - uses: jdx/mise-action@8418fedb1110381a0d3ba51a7a415d7c1b884550 # v5.2.2
+        with:
+          sha256: fe6dd17e68e09682b31d2e7bb7bb755d22636ac1af5d94621e300f2ca9e9fe8a
+          version: 2026.10.17
+      - run: mise x -- bun install --frozen-lockfile
+      - run: mise x -- bunx oxfmt --check
+      - run: mise x -- bunx oxlint
+      - run: mise x -- bunx tsc -p .
+      - run: mise x -- bun test --coverage
+      # stele graph gate (check → emit --check). NEVER `stele build` in CI: it is
+      # the sole writer of .stele/graph.lock and would launder a stale lock green.
+      - run: |
+          curl -fsSLO https://github.com/jgeschwendt/stele/releases/download/v0.3.0/stele-x86_64-linux.tar.gz
+          echo "32bdb9542a86a56f8a023c99965eab7934e44eadbe35bd8aeab7d90e5e8bf30d  stele-x86_64-linux.tar.gz" | sha256sum -c
+          mkdir -p ~/.local/bin && tar -xzf stele-x86_64-linux.tar.gz -C ~/.local/bin stele
+        working-directory: ${{ runner.temp }}
+      - run: ~/.local/bin/stele check
+      - run: ~/.local/bin/stele emit --check
