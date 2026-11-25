@@ -1,10 +1,6 @@
-# MIT License
+MIT License
 
 Copyright (c) 2026 Joshua Geschwendt
-
-This license covers the source code in this repository. The writing, figures and data are
-licensed separately under Creative Commons Attribution 4.0 International: see
-[LICENSE-CC-BY-4.0.txt](LICENSE-CC-BY-4.0.txt).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
