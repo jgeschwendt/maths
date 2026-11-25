@@ -1,4 +1,4 @@
-import type { Curve } from './ec.ts';
+import { type Curve, rootNumber } from './ec.ts';
 
 /**
 A complex number [re, im]
@@ -69,11 +69,11 @@ const upperGamma = (s: number, x: number): number => {
 
 /**
 L(E, s) from the coefficients by the smoothed sum Λ(s) = Σ a_n·[(A/n)^s·Γ(s, n/A) + w·(A/n)^(2−s)·Γ(2−s, n/A)],
-A = √N/2π, the root number w = (−1)^rank; terms past 60·A are below 1e−24
+A = √N/2π, w the root number computed from the bad primes; terms past 60·A are below 1e−24
 */
 const lFunction = (curve: Curve, a: readonly number[]): ((s: number) => number) => {
   const A = Math.sqrt(curve.conductor) / (2 * Math.PI);
-  const w = (-1) ** curve.rank;
+  const w = rootNumber(curve);
   return (s) => {
     let sum = 0;
     for (let n = 1; n <= 60 * A; n += 1) {

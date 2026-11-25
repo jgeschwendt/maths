@@ -16,5 +16,12 @@ export default defineConfig({
         'unicorn-js/name-replacements': ['error', { ignore: [String.raw`^(e\d?|i|j|mod)$`] }],
       },
     },
+    {
+      files: ['bsd/page.ts'],
+      rules: {
+        // the page's registry imports one module per figure, so it grows with the page. (2026-11-25)
+        'import/max-dependencies': 'off',
+      },
+    },
   ],
 });

@@ -1,0 +1,14 @@
+# the family y² + y = x³ + x + t, t = −5 … 5, from JohnCremona/ecdata allgens/allgens.00000-09999 (t ≤ 4)
+# and allgens/allgens.10000-19999 (t = 5), https://github.com/JohnCremona/ecdata
+# conductor, isogeny class, number, [a1,a2,a3,a4,a6], rank, [torsion], generators [X:Y:Z]
+9811 c 1 [0,0,1,1,-5] 0 []
+6139 a 1 [0,0,1,1,-4] 1 [] [2:2:1]
+3331 a 1 [0,0,1,1,-3] 0 []
+1387 a 1 [0,0,1,1,-2] 1 [] [1:0:1]
+307 c 1 [0,0,1,1,-1] 0 []
+91 a 1 [0,0,1,1,0] 1 [] [0:0:1]
+739 a 1 [0,0,1,1,1] 0 []
+2251 a 1 [0,0,1,1,2] 2 [] [-1:0:1] [0:1:1]
+4627 b 1 [0,0,1,1,3] 1 [] [2:11:8]
+7867 a 1 [0,0,1,1,4] 2 [] [-1:1:1] [1:2:1]
+11971 a 1 [0,0,1,1,5] 0 []

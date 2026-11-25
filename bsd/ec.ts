@@ -162,6 +162,25 @@ const trace = (curve: Curve, p: number): number => {
 };
 
 /**
+The root number w = −∏ w_p over p | N, w_p = −a_p, for a semistable curve (N squarefree: every bad prime multiplicative);
+additive reduction needs local data this model does not compute, so a square factor of N throws
+*/
+const rootNumber = (curve: Curve): number => {
+  let [n, w] = [curve.conductor, -1];
+  for (let p = 2; n > 1; p += 1) {
+    if (n % p !== 0) {
+      continue;
+    }
+    n /= p;
+    if (n % p === 0) {
+      throw new RangeError(`conductor ${curve.conductor} is not squarefree`);
+    }
+    w *= -trace(curve, p);
+  }
+  return w;
+};
+
+/**
 a_0 … a_size of the L-series (a_0 = 0): multiplicative, with a_{p^k} = a_p·a_{p^(k−1)} − p·a_{p^(k−2)} at good p
 */
 const coefficients = (curve: Curve, size: number): readonly number[] => {
@@ -196,6 +215,7 @@ export {
   parse,
   plus,
   rational,
+  rootNumber,
   times,
   write,
 };
