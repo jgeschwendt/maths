@@ -1,6 +1,7 @@
 import { biggerWorld } from './figure-bigger-world.ts';
 import { clue } from './figure-clue.ts';
 import { derivative } from './figure-derivative.ts';
+import { familyDial } from './figure-family.ts';
 import { graphs } from './figure-graphs.ts';
 import { machineRank1 } from './figure-machine-rank1.ts';
 import { machineRank2 } from './figure-machine-rank2.ts';
@@ -16,6 +17,7 @@ const figures: Readonly<Record<string, () => string>> = {
   'bigger-world': biggerWorld,
   clue,
   derivative,
+  'family': familyDial,
   graphs,
   'machine-rank1': machineRank1,
   'machine-rank2': machineRank2,

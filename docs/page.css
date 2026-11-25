@@ -24,6 +24,24 @@
   color: var(--ui-fg);
 }
 
+/* the family's dial: a stepper under its figure */
+.plot .dial {
+  align-items: center;
+  gap: var(--ui-space-2);
+  margin-top: var(--ui-space-2);
+}
+
+.plot .dial input {
+  accent-color: var(--ui-accent);
+  flex: 1;
+  max-width: 20rem;
+}
+
+.plot .dial output {
+  font-variant-numeric: tabular-nums;
+  min-width: 4rem;
+}
+
 .problem h3 {
   margin-top: var(--ui-space-6);
 }
