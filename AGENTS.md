@@ -24,6 +24,7 @@ The design and the write-up are `docs/index.html` (GitHub Pages, https://jgeschw
 - `mise run check` is the gate, and hk's pre-push and CI run it: format, lint, `tsc`, the suite under coverage, `stele check`, `stele emit --check`. `hk install --mise` once per clone arms the hook.
 - A change to a computed figure lands with `mise run docs`; the suite fails while the page is stale.
 - Figures draw in `currentColor` and opacity only, so both themes of the page carry them.
+- Literature before computation: sweep what is published (gigaresearch; ledgers in `~/.claude/research/bsd-*`) and enter every known result in the page's status table with its source before a probe computes anything. A probe targets only what the sweep found undone. (since 2026-11-26 · "If something was discovered we should know it. Not discover ourselves")
 
 <!-- @stele -->
 
