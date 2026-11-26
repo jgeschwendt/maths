@@ -34,9 +34,10 @@ The design and the write-up are `docs/index.html` (GitHub Pages, https://jgeschw
 
 ## Map
 
-| node | kind      | purpose                                                                                                                                                                                  | unfold                                         |
-| ---- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| docs | container | the page — `index.html` (GitHub Pages), the only prose source — BSD in computed figures, each claim's status, the open step, how to reproduce; `page.css` holds only what is this page's | `stele unfold docs` · or read `docs/AGENTS.md` |
+| node  | kind      | purpose                                                                                                                                                                                    | unfold                                           |
+| ----- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+| docs  | container | the page — `index.html` (GitHub Pages), the only prose source — BSD in computed figures, each claim's status, the open step, how to reproduce; `page.css` holds only what is this page's   | `stele unfold docs` · or read `docs/AGENTS.md`   |
+| probe | container | the Rust probe — exact L-polynomials of Ulmer's curve and its quadratic twists over F5(t), their BSD invariants and Yun–Zhang's self-intersection; `mise run docs` writes `bsd/twists.tsv` | `stele unfold probe` · or read `probe/AGENTS.md` |
 
 ## Indexes
 
