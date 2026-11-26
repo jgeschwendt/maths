@@ -190,6 +190,8 @@ build_2(curve where depth == 2) -> (Point, Point)   // independent</pre>
         <tr><td>y² + xy = x³ − t<sup>d</sup> over F<sub>q</sub>(t), d dividing p<sup>n</sup> + 1: BSD holds, with ranks unbounded as d grows</td><td><span class="badge badge-ok">proved</span></td><td>Ulmer, Ann. of Math. 155 (2002), Thm 9.2, <a class="link" href="https://arxiv.org/abs/math/0109163">arXiv:math/0109163</a></td></tr>
         <tr><td>d = 6 over F<sub>5</sub>(t): L = 1 − 5T − 25T² + 125T³ = (1 − 5T)²(1 + 5T), a zero of order exactly 2</td><td><span class="badge badge-info">computed here, exact</span></td><td>every fibre counted over F<sub>5<sup>k</sup></sub>, k ≤ 5; deg L = deg n − 4 = 3 (Ulmer, arXiv:1101.1939, Thm 9.3); rank 2 agrees with Ulmer's Thm 9.2</td></tr>
         <tr><td>Its points (t², 0) and (0, 2t³): on the curve, heights ⅔ and ½, pairing 0, so independent and the rank is 2</td><td><span class="badge badge-info">computed here, exact</span></td><td>by substitution; Shioda's height formula (Schütt–Shioda, <a class="link" href="https://arxiv.org/abs/0907.0298">arXiv:0907.0298</a>, 11.8); rank ≤ 2 by Tate</td></tr>
+        <tr><td>Over function fields in odd characteristic, PGL<sub>2</sub>, square-free level: the r-th central derivative of the base-change L-function equals the self-intersection of the Heegner–Drinfeld cycle on shtukas with r legs</td><td><span class="badge badge-ok">proved</span></td><td>Yun–Zhang, <a class="link" href="https://arxiv.org/abs/1512.02683">arXiv:1512.02683</a> (unramified); Ann. of Math. 189 (2019), <a class="link" href="https://arxiv.org/abs/1712.08026">arXiv:1712.08026</a> (square-free level)</td></tr>
+        <tr><td>A shtuka-like space with two legs over Spec Z</td><td><span class="badge badge-warn">open</span></td><td>the open step below</td></tr>
       </tbody>
     </table>
   </div>
@@ -296,6 +298,58 @@ for (const root of document.querySelectorAll('[data-dial]')) wire(root);</script
   <p class="docs-lead">At a double zero the known constructions produce Selmer classes — shadows of
     points — not the two independent points themselves. Closing that gap is the problem at its first
     open case.</p>
+  <p>The open step, stated plainly: <strong>over Q, what plays the role of the second leg?</strong> The
+    rest of this section explains the question.</p>
+  <p><strong>Why the machine stops at one.</strong> The machine of 5 works on a curve, the modular
+    curve X<sub>0</sub>(N), and the Heegner point is one point on it. Gross–Zagier says L′(E, 1) is the
+    height of that point, a single length. A double zero asks for an area, the regulator of 6b, and a
+    single point on a curve has no area. The machine needs a space with a second direction to move
+    in.</p>
+  <p><strong>The sister world has that machine.</strong> Over function fields, Yun and Zhang build it
+    for every r. The space is the moduli of shtukas with r legs. A shtuka is a rank-two bundle on the
+    base curve X that is matched to its own Frobenius twist after it is modified at r points of X, its
+    legs. The legs move, so the space lies over X × X × ⋯ × X, r copies. At r = 1 it is the analogue
+    of the modular curve, and its Heegner–Drinfeld cycle is the analogue of the Heegner point, "a
+    direct analogue of the Gross–Zagier formula" (their Remark 1.5). For every r the r-th derivative
+    of L at the centre equals the self-intersection of that cycle. Their second paper allows the
+    square-free level that semistable elliptic curves need, in odd characteristic.</p>
+  <p><strong>Ulmer's curve is in range.</strong> Over F<sub>5</sub>(t), y² + xy = x³ − t⁶ has
+    discriminant Δ = t⁶(1 − 2t⁶) and c<sub>4</sub> = 1. Every bad fibre is multiplicative, and the
+    curve has good reduction at ∞. That makes seven bad places of total degree 7, which matches deg L =
+    7 − 4 = 3 above. The curve is semistable in characteristic 5, which is the case their theorem
+    covers. Its points P and Q have heights ⅔ and ½ and pairing 0, so the area they span is ⅓.</p>
+  <p><strong>Even there, the machine returns a number, not points.</strong> The theorem matches a
+    derivative with an intersection number. Its authors call the link from the cycle to the rank "not
+    clear". They suggest it may be easier to build the r-th wedge, a single area, than the points one
+    at a time. That is the "machine that returns an area" of 6b, and it exists in the sister world.</p>
+  <p><strong>Over Q the second leg has nowhere to stand.</strong> In the sister world X × X is a
+    surface because both copies of X lie over the finite field F<sub>5</sub>. Over Q the base curve is
+    Spec Z, the integers seen as a curve. The only product available is over Z itself, and
+    Z ⊗ Z = Z, so Spec Z × Spec Z collapses back to Spec Z. Two legs over Q would need the product
+    taken over something below Z. Nothing below Z is known (the hoped-for "field with one element"), so
+    the second leg has no space to move in.</p>
+  <pre class="snippet">// sister world, proved (Yun–Zhang, r legs)
+derivative_r(L, centre) == self_intersection(heegner_drinfeld_cycle(Sht_r))
+
+// over Q, r = 1: the space is X_0(N), proved (Gross–Zagier)
+derivative_1(L, 1) == height(heegner_point)
+
+// over Q, r = 2: the open step
+Sht_2 over Spec Z ×_? Spec Z   <span class="snippet-note"># what is ?, or what replaces the product</span>
+derivative_2(L, 1) == area(P, Q)   <span class="snippet-note"># = Ω·Reg on 389a1, 0.7593…</span></pre>
+  <p>The question has three sizes:</p>
+  <ol>
+    <li><strong>Computable here.</strong> Choose a quadratic extension F′ of F<sub>5</sub>(t) that meets
+      Yun–Zhang's conditions at Ulmer's seven bad places: none of them ramifies in F′, and the number
+      that stay inert has the parity of r = 2. Then check that the twisted curve's L-value at the
+      centre is non-zero. Their r = 2 identity then becomes a statement about this curve, ready to set
+      beside the area ⅓.</li>
+    <li><strong>Unknown in the sister world.</strong> Does the r = 2 cycle produce P ∧ Q, the area
+      itself, and not only its size?</li>
+    <li><strong>The problem.</strong> Over Q, find a space where a second leg can move: a stand-in
+      for Spec Z × Spec Z, or a construction that never needs one. Its Heegner-type cycle would be
+      build_2 from 7.</li>
+  </ol>
 </section>
 
 <!-- ※ reproduce -->
