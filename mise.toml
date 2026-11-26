@@ -1,21 +1,30 @@
 [tools]
+"aqua:taiki-e/cargo-llvm-cov" = "0.9.1"
 bun = "1.4.4"
 # hk runs the pre-push gate (hk.pkl); `hk install --mise` wires it
 hk = { version = "2.12.0", workflow = "release.yml" }
 # the oxlint and oxfmt launchers run under node
 node = "24"
+# the probe's pin, with the components its gate runs
+rust = { version = "1.100.0", components = "clippy,llvm-tools,rustfmt" }
 
 [tasks.check]
-description = "the gate hk's pre-push and CI run: format, lint, types, the suite at 100 % coverage (docs/index.html current with its figures included), the stele graph"
+description = "the gate hk's pre-push and CI run: format, lint, types, the probe (fmt, clippy, tests at 100 % lines), the suite at 100 % coverage (docs/index.html current with its figures included), the stele graph"
 run = [
   "bunx oxfmt --check",
   "bunx oxlint",
   "bunx tsc -p .",
+  "cargo fmt --manifest-path probe/Cargo.toml --check",
+  "cargo clippy --manifest-path probe/Cargo.toml --all-targets -- -D warnings",
+  "cargo llvm-cov --manifest-path probe/Cargo.toml --fail-uncovered-lines 0",
   "bun test --coverage",
   "stele check",
   "stele emit --check",
 ]
 
 [tasks.docs]
-description = "render every computed figure into docs/index.html between its markers"
-run = "bun --eval \"const { page, render } = await import('./bsd/page.ts'); await Bun.write(page, render(await Bun.file(page).text()));\""
+description = "sweep the twists into bsd/twists.tsv, then render every computed figure into docs/index.html between its markers"
+run = [
+  "run-loaded --reason \"bsd twists\" -- cargo run --release --manifest-path probe/Cargo.toml -- bsd/twists.tsv",
+  "bun --eval \"const { page, render } = await import('./bsd/page.ts'); await Bun.write(page, render(await Bun.file(page).text()));\"",
+]

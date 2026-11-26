@@ -11,6 +11,7 @@ import { pointsRank0 } from './figure-points-rank0.ts';
 import { pointsRank1 } from './figure-points-rank1.ts';
 import { pointsRank2 } from './figure-points-rank2.ts';
 import { sisterWorld } from './figure-sister.ts';
+import { twists } from './figure-twists.ts';
 
 /**
 Every computed figure by the id of its markers in docs/index.html
@@ -29,6 +30,7 @@ const figures: Readonly<Record<string, () => string>> = {
   'points-rank1': pointsRank1,
   'points-rank2': pointsRank2,
   'sister-world': sisterWorld,
+  twists,
 };
 
 /**
