@@ -28,6 +28,9 @@ jobs:
       - run: mise x -- bunx oxfmt --check
       - run: mise x -- bunx oxlint
       - run: mise x -- bunx tsc -p .
+      - run: mise x -- cargo fmt --manifest-path probe/Cargo.toml --check
+      - run: mise x -- cargo clippy --manifest-path probe/Cargo.toml --all-targets -- -D warnings
+      - run: mise x -- cargo llvm-cov --manifest-path probe/Cargo.toml --fail-uncovered-lines 0
       - run: mise x -- bun test --coverage
       # stele graph gate (check → emit --check). NEVER `stele build` in CI: it is
       # the sole writer of .stele/graph.lock and would launder a stale lock green.
