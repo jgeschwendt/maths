@@ -201,6 +201,9 @@ build_2(curve where depth == 2) -> (Point, Point)   // independent</pre>
         <tr><td>Rank 2 over Q: the class equals a constant times P ⊗ log<sub>p</sub> Q − Q ⊗ log<sub>p</sub> P</td><td><span class="badge badge-ok">proved</span></td><td>Castella–Hsieh, <a class="link" href="https://arxiv.org/abs/1809.09066">arXiv:1809.09066</a>, Cor. 5.1, under Thm A's hypotheses</td></tr>
         <tr><td>At rank 2, expect a canonical element of ⋀² E(Q), not two canonical points</td><td><span class="badge badge-warn">expectation</span></td><td>Loeffler, "Euler and Kolyvagin systems", <a class="link" href="https://celebratio.org/Mazur_BC/article/1158/">Celebratio Mathematica</a> (2024), §7</td></tr>
         <tr><td>Shtukas with any number of legs over Spa Z<sub>p</sub> × Spa Z<sub>p</sub>, one prime at a time</td><td><span class="badge badge-ok">proved</span></td><td>Scholze–Weinstein, Berkeley lectures, Lecture 23; Scholze, ICM 2018, <a class="link" href="https://arxiv.org/abs/1712.03708">arXiv:1712.03708</a></td></tr>
+        <tr><td>r-modularity proved: r = 2 for tame curves over F<sub>q</sub>(t) with conductor degree 4 (rank 0, L ≡ 1); r = 3 for the Legendre curve; no case of positive rank; its reduction to a Tate conjecture for shtukas is a heuristic only</td><td><span class="badge badge-ok">proved</span></td><td>Logan–Weinstein, arXiv:2211.11149, Thms 1.2.4 and 1.4.3, §1.3</td></tr>
+        <tr><td>No Tate conjecture is proved for any shtuka stack with r ≥ 2; Sht² for Γ<sub>0</sub>(N) is verified in two q = 2 cases</td><td><span class="badge badge-info">literature sweep</span></td><td>swept 2026-11-26; de Frutos-Fernández, JTNB 2022; Yun, survey <a class="link" href="https://arxiv.org/abs/2411.10248">arXiv:2411.10248</a></td></tr>
+        <tr><td>Ulmer's curves y² + xy = x³ − t<sup>d</sup> are the pullback of y² + xy = x³ − u along u = t<sup>d</sup>; with q ≡ −1 mod d the rank splits into rank-one Heegner phenomena over a dihedral tower</td><td><span class="badge badge-ok">proved</span></td><td>Darmon, MSRI Publ. 49 (2004), <a class="link" href="https://library.slmath.org/books/Book49/files/12darmon.pdf">ch. 12</a></td></tr>
         <tr><td>A shtuka-like space with two legs over Spec Z</td><td><span class="badge badge-warn">open</span></td><td>Yun–Zhang, arXiv:1512.02683, introduction; Clausen, <a class="link" href="https://arxiv.org/abs/2605.11950">arXiv:2605.11950</a>; Connes–Consani, <a class="link" href="https://arxiv.org/abs/1405.4527">arXiv:1405.4527</a></td></tr>
       </tbody>
     </table>
@@ -391,7 +394,24 @@ derivative_2(L, 1) == area(P, Q)   <span class="snippet-note"># = Ω·Reg on 389
       L-functions over F<sub>5</sub>(t) have been computed for other curves (Baig–Hall).</li>
     <li><strong>Open in the sister world.</strong> Does the r = 2 cycle produce P ∧ Q, the area
       itself, and not only its size? This is Yun–Zhang's Conjecture 1.6, open in every case of rank 2
-      or more.</li>
+      or more. The route through Logan–Weinstein's map from Sht² to E′ × E′ narrows to one step:
+      <ul>
+        <li><strong>Not through algebraicity.</strong> Ulmer's surface is rational, so its H² is
+          algebraic for elementary reasons. The map sees the local system H¹(E<sub>η̄</sub>), not the
+          global cohomology. Its smooth fibres are ordinary (a<sub>t</sub> = 1, −4), so the roots ±5 of
+          L do not reach it. In the nearest number-field results the Tate-type case is excluded, not
+          easier (Tian–Xiao; Xiao–Zhu).</li>
+        <li><strong>Through base change.</strong> Ulmer's curve is y² + xy = x³ − u pulled back along
+          u = t⁶. That curve has conductor degree 4 (II* at ∞, two I<sub>1</sub>) and is tame, the
+          case Logan–Weinstein prove 2-modular; this is our reading of their Thm 1.2.4. No published
+          work carries 2-modularity along a cover such as u = t⁶.</li>
+        <li><strong>The twists close BSD over F′.</strong> The cycle lives over F′ = F(√D), where
+          BSD needs the twist as well. For the 401 twists above, BSD holds for E over F′, so a generator
+          of the ∧² line there is a multiple of P ∧ Q.</li>
+        <li><strong>The caveat.</strong> Over F<sub>25</sub>(t) the rank splits over a dihedral tower
+          into rank-one Heegner phenomena (Darmon). On this curve P and Q may each be reachable at rank
+          one, so a success here would not yet test a double zero of a single L-function.</li>
+      </ul></li>
     <li><strong>The problem.</strong> Over Q, find a space where a second leg can move: a stand-in
       for Spec Z × Spec Z, or a construction that never needs one. Its Heegner-type cycle would be
       build_2 from 7.</li>
